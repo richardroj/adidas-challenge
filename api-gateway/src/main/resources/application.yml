@@ -1,0 +1,44 @@
+server:
+  port: 9080
+
+public-service: lb://public-service
+adiclub-service: lb://adiclub-service
+email-service: lb://email-service
+members-service: lb://members-service
+
+eureka:
+  instance:
+    preferIpAddress: true
+
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: docker
+  cloud:
+    config:
+      enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    use-root-path: true
+    urls:
+      - name: public-service
+        url: /public-service/v3/api-docs
+      - name: adiclub-service
+        url: /adiclub-service/v3/api-docs
+      - name: email-service
+        url: /email-service/v3/api-docs
+      - name: members-service
+        url: /members-service/v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

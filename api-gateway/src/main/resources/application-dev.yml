@@ -1,0 +1,45 @@
+logging:
+  level:
+    root: INFO
+    reactor:
+      netty: DEBUG
+    org:
+      springframework:
+        cloud:
+          gateway: TRACE
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:9061/eureka}
+
+spring:
+  security:
+    user:
+      name: adidas
+      password: adidas1234
+  cloud:
+    gateway:
+      routes:
+        - id: public-service-route
+          uri: ${public-service}
+          predicates:
+            - Path=/public-service/**
+        - id: adiclub-service-route
+          uri: ${adiclub-service}
+          predicates:
+            - Path=/adiclub-service/**
+        - id: email-service-route
+          uri: ${email-service}
+          predicates:
+            - Path=/email-service/**
+        - id: members-service-route
+          uri: ${members-service}
+          predicates:
+            - Path=/members-service/**
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs

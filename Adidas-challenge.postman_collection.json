@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "b2b70bb4-029d-4d17-b390-4b4aa293cf9d",
+		"name": "Adidas-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3999339"
+	},
+	"item": [
+		{
+			"name": "Public - Create subscription",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "adidas1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adidas",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subscription\":\n    {\n    \"id\":\"uuid\",\n    \"name\":\"test\",\n    \"email\":\"richard@gmail.com\"    \n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9080/public-service/subscriptions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"public-service",
+						"subscriptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adiclub-Get info",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "adidas1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adidas",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9080/adiclub-service/adiclub?emailAddress=param",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"adiclub-service",
+						"adiclub"
+					],
+					"query": [
+						{
+							"key": "emailAddress",
+							"value": "param"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email-Send email",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "adidas1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adidas",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9080/email-service/emails?to=email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"email-service",
+						"emails"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "email"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Public - Dummy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9080/public-service/dummy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"public-service",
+						"dummy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
